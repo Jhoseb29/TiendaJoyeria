@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import ProductItem from "../components/ProductItem"
-import { setFilterCategoriesThunk, setCategoriesThunk, setProductThunk, setFilterHeadlineThunk } from "../redux/actions"
+import ProductsList from "../components/ProductsList"
+import { setCategoriesThunk, setProductThunk, setFilterHeadlineThunk } from "../redux/actions"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
+import Categories from "../components/Categories"
+import '../styles/shop.css'
 
 
 
@@ -11,7 +14,7 @@ const Shop = () => {
     const productArr = useSelector(state => state.products)
     const categories = useSelector(state => state.categories)
     const [headline, setHeadline] = useState("")
-
+    const [open, setOpen] = useState(false)
 
     useEffect(() => {
         dispatch(setProductThunk())
@@ -25,40 +28,58 @@ const Shop = () => {
 
 
 
-    const categoriesList = categories.map(item => <button
-        key={item.id}
-        onClick={() => dispatch(setFilterCategoriesThunk(item.id))}>
-        {item.name}
-    </button>)
+    const categoriesList = categories.map((item) => <Categories key={item.id} category={item} />)
 
 
-    const list = productArr.length === 0 ? (<p> No se encontraron resultados</p>) : (productArr.map((item) => <ProductItem key={item.id} prodObj={item} />))
+
 
     return (
 
-        <div>
-            <div>
-                <button><Link to="/singup">Sing Up</Link></button>
-                <button><Link to="/login">LogOut</Link></button>
-                <button><Link to="/">Home</Link></button>                
+        <div className="shop">
+            <div className="nav-container">
+                <div className="items-container">
+                    <div className="bars">
+                        <FontAwesomeIcon className="color-style" onClick={() => setOpen(!open)} icon="bars" />
+                        {open && <ul className="bars-container">
+                            <li><Link className="color-size"to="/login"><FontAwesomeIcon  icon="arrow-right-from-bracket"  />LogOut</Link>
+                            </li>
+                            <li><Link className="color-size"to="/"><FontAwesomeIcon icon="house-crack" />Home</Link>
+                            </li>
+                        </ul>}
+                    </div>
+                    <div className="cart-container">
+
+                        <Link className="color-style" to="/cart"><FontAwesomeIcon icon="cart-shopping" /></Link>
+                    </div>
+                </div>
             </div>
             <h1>esta es mi tienda</h1>
-            <form onSubmit={searchProduct}>
-                <input
-                    type="text"
-                    placeholder="Search Product"
-                    value={headline}
-                    onChange={e => setHeadline(e.target.value)} />
-                <button>Search</button>
-            </form>
+            <div className="search">
+                <form onSubmit={searchProduct}>
+                    <input
+                        type="search"
+                        placeholder="Search Product"
+                        value={headline}
+                        onChange={e => setHeadline(e.target.value)} />
+                    <button>Search</button>
+                </form>
+            </div>
+
             {categoriesList}
             <button onClick={() => dispatch(setProductThunk())} >
                 All Products
             </button>
-            <div>
-                {list}
-            </div>
-
+            {
+                productArr.length ? (
+                    <>
+                        <ProductsList products={productArr} />
+                    </>
+                ) : (
+                    <div className="not-found">
+                        <span className='message'>Not products found</span>
+                    </div>
+                )
+            }
         </div>
     )
 }

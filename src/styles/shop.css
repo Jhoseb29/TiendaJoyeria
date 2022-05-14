@@ -1,0 +1,43 @@
+.shop {
+    background: white;
+}
+
+.shop .nav-container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    left: 550px;
+    top: 40px;
+}
+
+.shop .bars{
+    position: absolute;
+    cursor: pointer;
+}
+
+.shop .cart-container{
+    position: relative;
+    left: 80px; 
+    bottom: 5px;
+}
+
+.color-size{
+    color: black;
+}
+
+.color-style{
+    font-size: 20px;
+    color: black;
+}
+
+.shop .bars{
+    transition: 5s;
+}
+
+.shop .bars ul li{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    right: 40px;
+    padding-bottom: 10px;
+}

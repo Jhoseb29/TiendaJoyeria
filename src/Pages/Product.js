@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { setInfoProductThunk, setFilterCategoriesThunk } from "../redux/actions";
 import { useEffect, useState } from 'react';
 import { addProductToCart } from "../services";
+import ProductsList from "../components/ProductsList"
 import { Link } from 'react-router-dom';
 
 
@@ -45,16 +46,16 @@ const Product = () => {
 
     const decrement = () => {
         setConfirm(false)
-        if(quantity > 0){
-          setQuantity(quantity - 1)
+        if (quantity > 0) {
+            setQuantity(quantity - 1)
         }
 
 
-      }
-      const increment = () => {
+    }
+    const increment = () => {
         setConfirm(false)
         setQuantity(quantity + 1)
-      }
+    }
 
 
     return (
@@ -65,20 +66,8 @@ const Product = () => {
 
                 <div>
                     {product.images?.map((item) => <img src={item.url} alt='' key={item.id} width="200px" />)}
-                    <h2>Productos Similares</h2>
-                    <div>
-                        { filter.map(product => (
-                            <Link key={product.name} to={`/shop/${product.id}`}>
-                                <div  >
-                                    <img width="200px" src={product.images[0].url} alt="" />
-                                    <br />
-                                    {product.name}
-                                    <br />
-                                    {product.price}
-                                </div>
-                            </Link>
-                        ))}
-                    </div>
+                    
+                    
                     <p>{product.description}</p>
                     <button onClick={decrement}>-</button>
                     {quantity}
@@ -87,6 +76,8 @@ const Product = () => {
                     <button onClick={() => setConfirm(true)}>Add To Cart</button>
                 </div>
                 <div>
+                <h2>Productos Similares</h2>
+                <ProductsList products={filter} />
                 </div>
 
             </>
