@@ -1,87 +1,92 @@
-:root{
+:root {
     font-size: 100%;
     font-size: 16px;
     line-height: 1.5;
     --primary-blue: #233975;
 }
 
-*{
+* {
     text-decoration: none;
+
 }
 
-body{
+body {
     padding: 0;
     margin: 0;
-    font-family: 'Montserrat', sans-serif; 
-    font-weight: 500;   
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
 }
 
-h1{
+h1 {
     font-size: 2.25rem;
     font-weight: 700;
 }
 
-h2{
+h2 {
     font-size: 1.5rem;
     font-weight: 700;
 }
 
-strong{
+strong {
     color: var(--primary-blue);
 }
 
-strong:hover{
+strong:hover {
     text-decoration: underline;
 }
 
-.split-screen{
+.split-screen {
     display: flex;
     flex-direction: column;
 }
 
-.left{
+.left {
     height: 200px;
 }
 
-.left, .right{
+.left,
+.right {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.left{
-    background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5)), url(../assets/Modelo.jpg);
+.left {
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url(../assets/Modelo.jpg);
     background-size: cover;
 }
 
-.left .copy{
+.left .copy {
     color: white;
     text-align: center;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-.left p{
+.left p {
     font-weight: 400;
 }
 
-.right .copy{
+.right .copy {
     color: black;
     text-align: center;
+
 }
 
-.right .copy p{
+
+.right .copy p {
     margin: 1.5em 0;
     font-size: 0.90rem;
+
 }
 
-.right form{
+.right form {
     width: 328px;
 }
 
 form input[type=text],
 form input[type=email],
-form input[type=password]{
+form input[type=password] {
     display: block;
     width: 100%;
     box-sizing: border-box;
@@ -93,20 +98,21 @@ form input[type=password]{
     font-weight: 600;
 }
 
-label{
+label {
     display: block;
     margin-bottom: 0.5rem;
     font-size: 0.90rem;
+    font-weight: 800;
 }
 
-.input-container.password{
+.input-container.password {
     position: relative;
 }
 
-.singup-btn{
+.singup-btn {
     display: block;
     width: 100%;
-    background: var(--primary-blue);
+    background: black;
     color: white;
     font-weight: 700;
     border: none;
@@ -119,20 +125,25 @@ label{
     transition: 0.70s;
 }
 
-.singup-btn:hover{
+.singup-btn:hover {
     background: #807045;
     transition: 0.70s;
 }
 
-@media screen and (min-width: 900px){
-    .split-screen{
+
+
+@media screen and (min-width: 900px) {
+    .split-screen {
         flex-direction: row;
         height: 100vh;
     }
-    .left, .right{
+
+    .left,
+    .right {
         display: flex;
         width: 50%;
         height: auto;
     }
-}
 
+   
+}

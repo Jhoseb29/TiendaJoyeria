@@ -64,7 +64,7 @@ export const getProductRings = async () => {
 }
 
 export const getProductNecklaces = async () => {
-    const req = await axios.get(`${URL}products/?category=3`, getConfig())
+    const req = await axios.get(`${URL}products/?category=2`, getConfig())
     return req.data
 }
 

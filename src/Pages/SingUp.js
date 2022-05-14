@@ -28,7 +28,7 @@ const SignUp = () => {
                     <section className='copy'>
                         <h2>Sing Up</h2>
                         <div className='login-container'>
-                            <p >Already have an account?                         <Link to="/login"> <strong>Log In</strong></Link></p> 
+                            <p >Already have an account?                         <Link to="/login"> <strong>Log In</strong></Link></p>
                         </div>
                     </section>
                     <div className='input-container-name'>

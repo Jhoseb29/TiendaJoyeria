@@ -27,7 +27,7 @@ const Login = () => {
     }, [userObj, navigate])
 
     return (
-        <div>
+        <div className='content-box'>
             <form onSubmit={handleSubmit(onSubmit)} >
                 <label htmlFor="email"></label>
                 <input placeholder='Your email' id='email' {...register('email')} type="email" />
